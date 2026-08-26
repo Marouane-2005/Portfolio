@@ -4,6 +4,9 @@ import {
   SubHeading,
   TagRow,
   ResultsGrid,
+  ChallengesList,
+  LearningsList,
+  LinkRow,
 } from "@/components/ProjectSection";
 
 const projectIndex = [
@@ -23,8 +26,8 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-text-muted">
-        Detailed case studies — architecture, pipelines and results — for the
-        internships and personal projects behind my CV.
+        Detailed case studies — architecture, technical decisions and
+        results — for the internships and personal projects behind my CV.
       </p>
 
       {/* Quick index */}
@@ -132,6 +135,28 @@ export default function ProjectsPage() {
           </div>
 
           <div>
+            <SubHeading>Challenges &amp; technical decisions</SubHeading>
+            <div className="mt-3">
+              <ChallengesList
+                items={[
+                  {
+                    challenge:
+                      "Raw SIEM alerts arrived faster than they could be manually triaged, creating a backlog similar to real SOC alert fatigue.",
+                    decision:
+                      "Built a Shuffle workflow to auto-deduplicate alerts and enrich them with VirusTotal/MISP reputation data before they ever reached an analyst.",
+                  },
+                  {
+                    challenge:
+                      "Needed to prove detection actually worked, not just that tools were installed.",
+                    decision:
+                      "Ran attack simulations mapped to specific MITRE ATT&CK techniques and checked each one produced a corresponding alert end to end.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
             <SubHeading>Results</SubHeading>
             <div className="mt-2">
               <ResultsGrid
@@ -139,6 +164,32 @@ export default function ProjectsPage() {
                   { value: "8", label: "Integrated SOC tools" },
                   { value: "1", label: "Automated triage pipeline" },
                   { value: "ATT&CK", label: "Mapped simulations" },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Key learnings</SubHeading>
+            <div className="mt-2">
+              <LearningsList
+                items={[
+                  "A SOC's value comes from the workflow connecting tools, not from any single tool in isolation.",
+                  "Automating enrichment first is what actually reduces analyst workload — detection alone just moves the bottleneck downstream.",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Links</SubHeading>
+            <div className="mt-2">
+              <LinkRow
+                links={[
+                  {
+                    label: "GitHub Repo",
+                    href: "https://github.com/Marouane-2005/soc-lab-chu",
+                  },
                 ]}
               />
             </div>
@@ -214,6 +265,67 @@ export default function ProjectsPage() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <SubHeading>Challenges &amp; technical decisions</SubHeading>
+            <div className="mt-3">
+              <ChallengesList
+                items={[
+                  {
+                    challenge:
+                      "A flat network meant a single compromised host in the app tier could reach the database directly.",
+                    decision:
+                      "Segmented the infrastructure into DMZ, app and database zones with OVN security groups, so lateral movement requires crossing an explicit, monitored boundary.",
+                  },
+                  {
+                    challenge:
+                      "Manual hardening checklists are easy to apply inconsistently across hosts.",
+                    decision:
+                      "Benchmarked every host against CIS controls with Lynis after hardening, turning a checklist into a repeatable, scored audit.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Results</SubHeading>
+            <div className="mt-2">
+              <ResultsGrid
+                results={[
+                  { value: "3", label: "Segmented network zones" },
+                  { value: "5+", label: "Hardening controls applied" },
+                  { value: "CIS", label: "Benchmark-validated" },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Key learnings</SubHeading>
+            <div className="mt-2">
+              <LearningsList
+                items={[
+                  "Network segmentation is only as strong as the security group rules enforcing it — each zone boundary needs to be tested, not assumed.",
+                  "Hardening and monitoring are complementary: Wazuh caught misconfigurations that static hardening alone would have missed.",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Links</SubHeading>
+            <div className="mt-2">
+              <LinkRow
+                links={[
+                  {
+                    label: "GitHub Repo",
+                    href: "https://github.com/Marouane-2005/private-cloud-hardening",
+                  },
+                ]}
+              />
+            </div>
+          </div>
         </ProjectSection>
 
         {/* ---------------- CTI PLATFORM ---------------- */}
@@ -281,6 +393,67 @@ export default function ProjectsPage() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <SubHeading>Challenges &amp; technical decisions</SubHeading>
+            <div className="mt-3">
+              <ChallengesList
+                items={[
+                  {
+                    challenge:
+                      "CVE, VirusTotal, Shodan and OSINT sources each return data in different formats with different rate limits.",
+                    decision:
+                      "Normalized every source into a common IOC schema before correlation, and queued enrichment calls to stay under each API's rate limit.",
+                  },
+                  {
+                    challenge:
+                      "Raw IOC lists don't tell an analyst what to prioritize first.",
+                    decision:
+                      "Mapped correlated threats to MITRE ATT&CK techniques so the dashboard surfaces context, not just a flat list of indicators.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Results</SubHeading>
+            <div className="mt-2">
+              <ResultsGrid
+                results={[
+                  { value: "4", label: "Correlated data sources" },
+                  { value: "Real-time", label: "Dashboard refresh" },
+                  { value: "Docker", label: "Containerized deployment" },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Key learnings</SubHeading>
+            <div className="mt-2">
+              <LearningsList
+                items={[
+                  "Correlation is what turns raw threat data into intelligence — a list of IOCs without ATT&CK context is just noise.",
+                  "Containerizing the pipeline early made it trivial to redeploy the platform in a clean environment for demos.",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Links</SubHeading>
+            <div className="mt-2">
+              <LinkRow
+                links={[
+                  {
+                    label: "GitHub Repo",
+                    href: "https://github.com/Marouane-2005/cti-platform",
+                  },
+                ]}
+              />
+            </div>
+          </div>
         </ProjectSection>
 
         {/* ---------------- SMART LOCK ZKP ---------------- */}
@@ -347,6 +520,67 @@ export default function ProjectsPage() {
                 secured via JWT session management
               </li>
             </ul>
+          </div>
+
+          <div>
+            <SubHeading>Challenges &amp; technical decisions</SubHeading>
+            <div className="mt-3">
+              <ChallengesList
+                items={[
+                  {
+                    challenge:
+                      "Traditional password-based auth means the backend must store something derived from the user's secret, which is itself a liability if breached.",
+                    decision:
+                      "Used a Zero-Knowledge Proof challenge-response scheme so the server can verify identity without ever holding a value that could be reversed into the credential.",
+                  },
+                  {
+                    challenge:
+                      "A challenge-response exchange is still vulnerable to interception if the channel itself isn't protected.",
+                    decision:
+                      "Layered asymmetric cryptography on top of the protocol specifically to close that man-in-the-middle gap.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Results</SubHeading>
+            <div className="mt-2">
+              <ResultsGrid
+                results={[
+                  { value: "0", label: "Raw credentials stored" },
+                  { value: "ZKP", label: "Auth protocol" },
+                  { value: "JWT", label: "Session management" },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Key learnings</SubHeading>
+            <div className="mt-2">
+              <LearningsList
+                items={[
+                  "Zero-Knowledge Proofs make a strong theoretical guarantee, but the surrounding transport still needs its own protection — crypto primitives don't compose safely by default.",
+                  "Designing the protocol before writing any Android/Spring Boot code made the client-server contract far easier to implement correctly.",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Links</SubHeading>
+            <div className="mt-2">
+              <LinkRow
+                links={[
+                  {
+                    label: "GitHub Repo",
+                    href: "https://github.com/Marouane-2005/smart-lock-zkp",
+                  },
+                ]}
+              />
+            </div>
           </div>
         </ProjectSection>
       </div>

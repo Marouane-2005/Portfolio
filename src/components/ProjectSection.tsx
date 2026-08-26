@@ -92,3 +92,69 @@ export function ResultsGrid({
     </div>
   );
 }
+
+type Callout = {
+  challenge: string;
+  decision: string;
+};
+
+export function ChallengesList({ items }: { items: Callout[] }) {
+  return (
+    <div className="space-y-3">
+      {items.map((item, i) => (
+        <div
+          key={i}
+          className="rounded-lg border border-panel-border bg-panel p-4"
+        >
+          <p className="text-sm text-text">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-sev-high">
+              Challenge —{" "}
+            </span>
+            {item.challenge}
+          </p>
+          <p className="mt-2 text-sm text-text-muted">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-sev-low">
+              Decision —{" "}
+            </span>
+            {item.decision}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function LearningsList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2">
+      {items.map((item, i) => (
+        <li key={i} className="flex gap-2.5 text-sm text-text-muted">
+          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sev-info" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function LinkRow({
+  links,
+}: {
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <div className="flex flex-wrap gap-3">
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded border border-panel-border px-3.5 py-2 font-mono text-[11px] uppercase tracking-widest text-text-muted transition-colors hover:border-sev-info hover:text-text"
+        >
+          {link.label} ↗
+        </a>
+      ))}
+    </div>
+  );
+}
