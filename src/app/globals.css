@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  /* Base surfaces */
+  --bg: #0b0f14;
+  --panel: #121821;
+  --panel-border: #1f2733;
+
+  /* Text */
+  --text: #e6edf3;
+  --text-muted: #7c8b9a;
+  --text-dim: #4b5a6a;
+
+  /* Severity accent scale — the signature palette, borrowed from SOC alert taxonomy */
+  --sev-info: #3b82f6;
+  --sev-low: #4fae7a;
+  --sev-medium: #e8a33d;
+  --sev-high: #e07a3f;
+  --sev-critical: #d64545;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-border: var(--panel-border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+  --color-sev-info: var(--sev-info);
+  --color-sev-low: var(--sev-low);
+  --color-sev-medium: var(--sev-medium);
+  --color-sev-high: var(--sev-high);
+  --color-sev-critical: var(--sev-critical);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  background-image:
+    linear-gradient(180deg, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 1) 100%),
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59, 130, 246, 0.08), transparent);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--sev-medium);
+  color: #0b0f14;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--sev-info);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Live alert stream animation — the hero's signature element */
+@keyframes stream-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+.stream-track {
+  animation: stream-scroll 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stream-track {
+    animation: none;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
