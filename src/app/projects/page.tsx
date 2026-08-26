@@ -1,4 +1,5 @@
 import PipelineDiagram from "@/components/PipelineDiagram";
+import Gallery from "@/components/Gallery";
 import {
   ProjectSection,
   SubHeading,
@@ -86,6 +87,40 @@ export default function ProjectsPage() {
                   "TheHive case",
                   "Cortex analysis",
                   "Analyst response",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Screenshots</SubHeading>
+            <div className="mt-3">
+              <Gallery
+                images={[
+                  {
+                    src: "/projects/soc-lab/architecture.jpg",
+                    caption: "Global architecture — detection, SOAR, response and threat intel",
+                  },
+                  {
+                    src: "/projects/soc-lab/network-topology.jpg",
+                    caption: "Network topology — isolated lab, VM roles and traffic flows",
+                  },
+                  {
+                    src: "/projects/soc-lab/kibana-rules.jpg",
+                    caption: "1,745 detection rules enabled in Kibana Security",
+                  },
+                  {
+                    src: "/projects/soc-lab/shuffle-workflow.jpg",
+                    caption: "Shuffle SOAR workflow — extraction, enrichment, notification",
+                  },
+                  {
+                    src: "/projects/soc-lab/thehive-case.jpg",
+                    caption: "TheHive case auto-populated with standardized investigation tasks",
+                  },
+                  {
+                    src: "/projects/soc-lab/cortex-responders.jpg",
+                    caption: "5 Cortex responders — endpoint, firewall and WAF containment",
+                  },
                 ]}
               />
             </div>
