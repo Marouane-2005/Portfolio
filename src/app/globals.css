@@ -2,21 +2,21 @@
 
 :root {
   /* Base surfaces */
-  --bg: #0b0f14;
-  --panel: #121821;
-  --panel-border: #1f2733;
+  --bg: #f7f9fb;
+  --panel: #ffffff;
+  --panel-border: #e2e8f0;
 
   /* Text */
-  --text: #e6edf3;
-  --text-muted: #7c8b9a;
-  --text-dim: #4b5a6a;
+  --text: #101827;
+  --text-muted: #52606d;
+  --text-dim: #94a3b8;
 
   /* Severity accent scale — the signature palette, borrowed from SOC alert taxonomy */
-  --sev-info: #3b82f6;
-  --sev-low: #4fae7a;
-  --sev-medium: #e8a33d;
-  --sev-high: #e07a3f;
-  --sev-critical: #d64545;
+  --sev-info: #2563eb;
+  --sev-low: #16915a;
+  --sev-medium: #b8790a;
+  --sev-high: #c2580f;
+  --sev-critical: #c0312f;
 }
 
 @theme inline {
@@ -49,14 +49,14 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   background-image:
-    linear-gradient(180deg, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 1) 100%),
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59, 130, 246, 0.08), transparent);
+    linear-gradient(180deg, transparent 0%, var(--bg) 100%),
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.07), transparent);
   background-attachment: fixed;
 }
 
 ::selection {
   background: var(--sev-medium);
-  color: #0b0f14;
+  color: var(--bg);
 }
 
 /* Respect reduced motion preference */
