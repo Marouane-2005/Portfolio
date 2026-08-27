@@ -264,6 +264,40 @@ export default function ProjectsPage() {
           </div>
 
           <div>
+            <SubHeading>Screenshots</SubHeading>
+            <div className="mt-3">
+              <Gallery
+                images={[
+                  {
+                    src: "/projects/cloud-hardening/network-topology.jpg",
+                    caption: "Network topology — pfSense, DMZ/DB/Mgmt zones, Wazuh agents",
+                  },
+                  {
+                    src: "/projects/cloud-hardening/security-groups.jpg",
+                    caption: "OpenStack security groups — per-tier network isolation",
+                  },
+                  {
+                    src: "/projects/cloud-hardening/pfsense-rules.jpg",
+                    caption: "pfSense WAN filtering rules",
+                  },
+                  {
+                    src: "/projects/cloud-hardening/wazuh-dashboard.jpg",
+                    caption: "Wazuh security events dashboard — 1,245 events, MITRE ATT&CK breakdown",
+                  },
+                  {
+                    src: "/projects/cloud-hardening/lynis-after.jpg",
+                    caption: "Lynis hardening index — 78/100 after remediation (up from 58)",
+                  },
+                  {
+                    src: "/projects/cloud-hardening/hydra-blocked.jpg",
+                    caption: "Hydra brute-force attempt blocked by Fail2ban",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
             <SubHeading>Technologies</SubHeading>
             <div className="mt-2">
               <TagRow
@@ -390,6 +424,32 @@ export default function ProjectsPage() {
                   "Correlation engine",
                   "MITRE ATT&CK mapping",
                   "Dashboard (Docker)",
+                ]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <SubHeading>Screenshots</SubHeading>
+            <div className="mt-3">
+              <Gallery
+                images={[
+                  {
+                    src: "/projects/cti-platform/pipeline.jpg",
+                    caption: "Collection → normalization → enrichment → analysis → storage pipeline",
+                  },
+                  {
+                    src: "/projects/cti-platform/dashboard.jpg",
+                    caption: "CTI dashboard — threat map, recent IOCs, MITRE ATT&CK heatmap",
+                  },
+                  {
+                    src: "/projects/cti-platform/data-model.jpg",
+                    caption: "Data model — indicators, CVEs, alerts and MITRE technique mapping",
+                  },
+                  {
+                    src: "/projects/cti-platform/docker-infra.jpg",
+                    caption: "Containerized infrastructure — 12 services across an isolated Docker network",
+                  },
                 ]}
               />
             </div>
