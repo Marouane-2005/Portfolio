@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AlertStream from "@/components/AlertStream";
+import StatsPanel from "@/components/StatsPanel";
 
 const focusAreas = [
   {
@@ -82,7 +82,7 @@ export default function Home() {
           </div>
         </div>
 
-        <AlertStream />
+        <StatsPanel />
       </section>
 
       {/* Focus areas */}
