@@ -968,8 +968,4 @@ export default function ProjectsPage() {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 006014f61f3c9803ebe75f44e55e84b143efd01a
