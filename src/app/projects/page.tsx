@@ -411,155 +411,168 @@ export default function ProjectsPage() {
           </div>
         </ProjectSection>
 
-        {/* ---------------- AWS CLOUD SECURITY ---------------- */}
-        <ProjectSection
-          id="aws-cloud-security"
-          title="AWS Cloud Security Monitoring & Automated Incident Response"
-          period="2026"
-          status="completed"
-          role="Personal project"
-        >
-          <div>
-            <SubHeading>Overview</SubHeading>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text">
-              Designed and deployed a secure, segmented AWS environment with
-              Terraform, backed by centralized logging, continuous threat
-              detection and an automated incident response pipeline that
-              quarantines compromised EC2 instances.
-            </p>
-          </div>
+      
+{/* ---------------- AWS CLOUD SECURITY ---------------- */}
+<ProjectSection
+  id="aws-cloud-security"
+  title="AWS Cloud Security Monitoring & Automated Incident Response"
+  period="2026"
+  status="completed"
+  role="Personal project"
+>
+  <div>
+    <SubHeading>Overview</SubHeading>
+    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text">
+      Designed and deployed a secure, segmented AWS environment using
+      Terraform, with centralized logging, continuous threat detection,
+      security monitoring, and automated incident response for compromised
+      EC2 instances.
+    </p>
+  </div>
 
-          <div>
-            <SubHeading>Detection &amp; response pipeline</SubHeading>
-            <div className="mt-3">
-              <PipelineDiagram
-                steps={[
-                  "CloudTrail / VPC Flow Logs / Config",
-                  "GuardDuty + Security Hub",
-                  "EventBridge",
-                  "SNS alert + Lambda",
-                  "EC2 quarantine",
-                ]}
-              />
-            </div>
-          </div>
+  <div>
+    <SubHeading>AWS Architecture</SubHeading>
+    <div className="mt-3 overflow-hidden rounded-lg border border-panel-border bg-panel">
+      <img
+        src="/images/aws-cloud-security-architecture.png"
+        alt="AWS Cloud Security architecture"
+        className="h-auto w-full"
+      />
+    </div>
+  </div>
 
-          <div>
-            <SubHeading>Technologies</SubHeading>
-            <div className="mt-2">
-              <TagRow
-                tags={[
-                  "AWS",
-                  "Terraform",
-                  "VPC",
-                  "ALB",
-                  "AWS WAF",
-                  "RDS",
-                  "IAM",
-                  "KMS",
-                  "VPC Endpoints",
-                  "CloudTrail",
-                  "VPC Flow Logs",
-                  "AWS Config",
-                  "GuardDuty",
-                  "Security Hub",
-                  "EventBridge",
-                  "SNS",
-                  "Lambda",
-                ]}
-              />
-            </div>
-          </div>
+  <div>
+    <SubHeading>Detection &amp; Response Pipeline</SubHeading>
+    <div className="mt-3">
+      <PipelineDiagram
+        steps={[
+          "CloudTrail / VPC Flow Logs / AWS Config",
+          "GuardDuty + Security Hub",
+          "EventBridge",
+          "SNS + Lambda",
+          "EC2 quarantine",
+        ]}
+      />
+    </div>
+  </div>
 
-          <div>
-            <SubHeading>What I did</SubHeading>
-            <ul className="mt-2 max-w-2xl list-disc space-y-1.5 pl-4 text-sm text-text-muted">
-              <li>
-                Deployed a segmented environment with Terraform: VPC,
-                public/private subnets, ALB, WAF and RDS, with least-privilege
-                IAM, KMS encryption and network isolation through VPC
-                Endpoints
-              </li>
-              <li>
-                Set up centralized logging and threat detection with
-                CloudTrail, VPC Flow Logs, AWS Config, GuardDuty and Security
-                Hub
-              </li>
-              <li>
-                Built an automated incident response pipeline (EventBridge to
-                SNS/Lambda) that alerts on high-severity findings and
-                auto-quarantines compromised EC2 instances
-              </li>
-              <li>
-                Validated the setup with controlled attack simulations:
-                privilege escalation, port scanning, and SQLi/XSS blocked by
-                the WAF
-              </li>
-            </ul>
-          </div>
+  <div>
+    <SubHeading>Technologies</SubHeading>
+    <div className="mt-2">
+      <TagRow
+        tags={[
+          "AWS",
+          "Terraform",
+          "VPC",
+          "ALB",
+          "AWS WAF",
+          "RDS",
+          "IAM",
+          "KMS",
+          "VPC Endpoints",
+          "CloudTrail",
+          "VPC Flow Logs",
+          "AWS Config",
+          "GuardDuty",
+          "Security Hub",
+          "EventBridge",
+          "SNS",
+          "Lambda",
+        ]}
+      />
+    </div>
+  </div>
 
-          <div>
-            <SubHeading>Challenges &amp; technical decisions</SubHeading>
-            <div className="mt-3">
-              <ChallengesList
-                items={[
-                  {
-                    challenge:
-                      "Detection alone leaves a window in which a compromised instance keeps running while someone reads the alert.",
-                    decision:
-                      "Wired high-severity findings through EventBridge to SNS and Lambda so the alert is sent and the affected EC2 instance is quarantined automatically.",
-                  },
-                  {
-                    challenge:
-                      "A public-facing application should not expose its data tier or send AWS service traffic over the internet.",
-                    decision:
-                      "Placed the database in private subnets, applied least-privilege IAM and KMS encryption, and used VPC Endpoints to keep service traffic off the public internet.",
-                  },
-                ]}
-              />
-            </div>
-          </div>
+  <div>
+    <SubHeading>What I Did</SubHeading>
+    <ul className="mt-2 max-w-2xl list-disc space-y-1.5 pl-4 text-sm text-text-muted">
+      <li>
+        Designed and deployed a segmented AWS environment with Terraform,
+        including a VPC, public and private subnets, ALB, WAF, RDS, IAM
+        controls, KMS encryption, and VPC Endpoints for private service
+        connectivity.
+      </li>
 
-          <div>
-            <SubHeading>Results</SubHeading>
-            <div className="mt-2">
-              <ResultsGrid
-                results={[
-                  { value: "Terraform", label: "Infrastructure as code" },
-                  { value: "Auto", label: "EC2 quarantine on high-severity findings" },
-                  { value: "3", label: "Attack scenarios validated" },
-                ]}
-              />
-            </div>
-          </div>
+      <li>
+        Implemented centralized logging and security monitoring using
+        CloudTrail, VPC Flow Logs, AWS Config, GuardDuty, and Security Hub.
+      </li>
 
-          <div>
-            <SubHeading>Key learnings</SubHeading>
-            <div className="mt-2">
-              <LearningsList
-                items={[
-                  "Detection only matters if it feeds a response — connecting GuardDuty and Security Hub findings to automation is what turns alerts into containment.",
-                  "Prevention and detection complement each other: least-privilege IAM, encryption and isolation reduce exposure before monitoring ever has to catch anything.",
-                ]}
-              />
-            </div>
-          </div>
+      <li>
+        Built an automated incident response workflow using EventBridge,
+        SNS, and Lambda to process high-severity security findings and
+        automatically quarantine affected EC2 instances.
+      </li>
 
-          <div>
-            <SubHeading>Links</SubHeading>
-            <div className="mt-2">
-              <LinkRow
-                links={[
-                  {
-                    label: "GitHub Profile",
-                    href: "https://github.com/Marouane-2005",
-                  },
-                ]}
-              />
-            </div>
-          </div>
-        </ProjectSection>
+      <li>
+        Validated the security architecture through controlled attack
+        simulations, including privilege escalation, port scanning, and
+        SQL injection/XSS scenarios mitigated by AWS WAF.
+      </li>
+    </ul>
+  </div>
 
+  <div>
+    <SubHeading>Challenges &amp; Technical Decisions</SubHeading>
+    <div className="mt-3">
+      <ChallengesList
+        items={[
+          {
+            challenge:
+              "Security alerts alone do not immediately contain a compromised EC2 instance.",
+            decision:
+              "Connected high-severity GuardDuty and Security Hub findings to EventBridge, SNS, and Lambda to trigger automated alerting and EC2 quarantine.",
+          },
+          {
+            challenge:
+              "A public-facing application should not directly expose its database or rely on unnecessary public network paths for AWS service communication.",
+            decision:
+              "Placed the database in private subnets, enforced least-privilege IAM and KMS encryption, and used VPC Endpoints for private connectivity to supported AWS services.",
+          },
+        ]}
+      />
+    </div>
+  </div>
+
+  <div>
+    <SubHeading>Results</SubHeading>
+    <div className="mt-2">
+      <ResultsGrid
+        results={[
+          { value: "Terraform", label: "Infrastructure as code" },
+          { value: "Automated", label: "EC2 quarantine on high-severity findings" },
+          { value: "3", label: "Attack scenarios validated" },
+        ]}
+      />
+    </div>
+  </div>
+
+  <div>
+    <SubHeading>Key Learnings</SubHeading>
+    <div className="mt-2">
+      <LearningsList
+        items={[
+          "Effective security monitoring requires an actionable response layer: connecting GuardDuty and Security Hub to EventBridge and Lambda transforms security findings into automated containment.",
+          "Security should be built into the architecture from the beginning through network segmentation, least-privilege IAM, encryption, and private connectivity.",
+        ]}
+      />
+    </div>
+  </div>
+
+  <div>
+    <SubHeading>Links</SubHeading>
+    <div className="mt-2">
+      <LinkRow
+        links={[
+          {
+            label: "GitHub Profile",
+            href: "https://github.com/Marouane-2005",
+          },
+        ]}
+      />
+    </div>
+  </div>
+</ProjectSection>
         {/* ---------------- DEVSECOPS PIPELINE ---------------- */}
         <ProjectSection
           id="devsecops-pipeline"
