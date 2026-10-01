@@ -15,7 +15,7 @@ export default function ResumePage() {
           </p>
         </div>
         <a
-          href="/cv.pdf"
+          href="/CV.pdf"
           download
           className="shrink-0 rounded bg-text px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bg transition-opacity hover:opacity-85"
         >
@@ -38,7 +38,7 @@ export default function ResumePage() {
           </a>
         </div>
         <object
-          data="/cv.pdf"
+          data="/CV.pdf"
           type="application/pdf"
           className="h-[80vh] w-full"
           aria-label="Marouane Chtita CV preview"
