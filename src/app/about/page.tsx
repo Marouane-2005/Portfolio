@@ -57,7 +57,7 @@ export default function AboutPage() {
       </h1>
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-text-muted">
         I&apos;m a cybersecurity engineering student at ENSIAS, based in
-        Fès, Morocco. My focus sits at the intersection of{" "}
+        Rabat, Morocco. My focus sits at the intersection of{" "}
         <span className="text-text">SOC operations</span>,{" "}
         <span className="text-text">threat intelligence</span> and{" "}
         <span className="text-text">cloud security</span> — I like
