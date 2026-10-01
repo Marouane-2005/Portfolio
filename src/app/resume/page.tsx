@@ -45,7 +45,7 @@ export default function ResumePage() {
         >
           <p className="p-6 text-sm text-text-muted">
             Your browser can&apos;t preview PDFs inline.{" "}
-            <a href="/cv.pdf" className="text-sev-info underline">
+            <a href="/CV.pdf" className="text-sev-info underline">
               Download the CV
             </a>{" "}
             instead.
