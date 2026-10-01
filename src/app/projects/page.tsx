@@ -434,7 +434,7 @@ export default function ProjectsPage() {
     <SubHeading>AWS Architecture</SubHeading>
     <div className="mt-3 overflow-hidden rounded-lg border border-panel-border bg-panel">
       <img
-        src="public/projects/soc-lab/Capture d'écran 2026-09-26 194139.png"
+        src="/projects/soc-lab/architectureAWS.png"
         alt="AWS Cloud Security architecture"
         className="h-auto w-full"
       />
